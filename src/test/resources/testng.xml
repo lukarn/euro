@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="test suite 1">
+    <!--
+    <listeners>
+        <listener class-name="utilities.ListenerManager" />
+    </listeners>
+    -->
+    <test verbose="3" name="test 1">
+        <classes>
+            <!-- comments here
+            <class name="tests.TestTerminarz"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestGrafik"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestODT"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestAddRemovePatients"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestSzpitalPlanowanieDodaj"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestSzpitalPlanowaniePrzyjmijAllOddzial"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestSzpitalOddzialBlokOperacyjnyAll"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestSzpitaBlokOperacyjnyOdzialAll"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestSzpitalPlanowaniePotwTermin"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestSzpitalOddzialEdytujDaneWypisu"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestSzpitalPlanowanieEdytuj"/>
+-->
+
+            <!-- comments here
+            <class name="tests.TestODTpzu"/>
+-->
+
+            <!-- comments here-->
+            <class name="tests.TestSignIn"/>
+
+
+        </classes>
+    </test>
+
+    <!-- comments here
+    <test verbose="3" name="test 2">
+        <classes>
+            <class name="tests.TestODTpzu"/>
+        </classes>
+    </test>
+    <test verbose="3" name="test 3">
+        <classes>
+            <class name="tests.TestODTpzu"/>
+        </classes>
+    </test>
+    <test verbose="3" name="test 4">
+        <classes>
+            <class name="tests.TestODTpzu"/>
+        </classes>
+    </test>
+    <test verbose="3" name="test 5">
+        <classes>
+            <class name="tests.TestODTpzu"/>
+        </classes>
+    </test>
+
+    <test verbose="3" name="test 6">
+        <classes>
+            <class name="tests.TestODTpzu"/>
+        </classes>
+    </test>
+    <test verbose="3" name="test 7">
+        <classes>
+            <class name="tests.TestODTpzu"/>
+        </classes>
+    </test>
+    <test verbose="3" name="test 8">
+        <classes>
+            <class name="tests.TestODTpzu"/>
+        </classes>
+    </test>
+    <test verbose="3" name="test 9">
+        <classes>
+            <class name="tests.TestODTpzu"/>
+        </classes>
+    </test>
+    <test verbose="3" name="test 10">
+        <classes>
+            <class name="tests.TestODTpzu"/>
+        </classes>
+    </test>
+-->
+
+</suite>

@@ -1,0 +1,5 @@
+check after pull (main project folder)
+1) drivers for using browser: chromedriver.exe, geckodriver.exe (compatibility with your system browser)
+2) folders: JSONdata/loginData.json + other JSON files
+3) folder for errors screenShoots/
+4) all written with open JDK11
