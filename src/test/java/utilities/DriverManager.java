@@ -4,6 +4,7 @@ import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -46,7 +47,7 @@ public class DriverManager {
 
     public WebDriver getChromeDriver()
     {
-        /*  local chrome */
+        /*  local chrome
         HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
         chromePrefs.put("profile.default_content_settings.popups", 0);
         chromePrefs.put("download.default_directory", System.getProperty("user.dir") + "\\screenShots");
@@ -66,25 +67,25 @@ public class DriverManager {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(timeoutDriverManager, TimeUnit.SECONDS);
 
+*/
 
 
 
-
-/*  remote chrome
+/*  remote chrome   */
         ChromeOptions options = new ChromeOptions();
         options.setCapability("platform", "WIN10");
         options.setCapability("browserName", "chrome");
         WebDriver driver = null;
 
-        //  http://localhost:4444/wd/hub
-        //  http://192.168.157.43:4444/wd/hub
+        //  http://localhost:4444/wd/hub (for Jenkins plugin - not used right now)
+        //  standalone selenium grid server .bat http://192.168.157.43:5555/wd/hub
         try {
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
+            driver = new RemoteWebDriver(new URL("http://192.168.157.43:5555/wd/hub"), options);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-*/
 
+        driver.manage().window().maximize();
         return driver;
     }
 
@@ -142,22 +143,23 @@ public class DriverManager {
         DesiredCapabilities dc = DesiredCapabilities.firefox();
         dc.setCapability("marionette", true);
         dc.setBrowserName("firefox");
-
-
+//
+//
 //        FirefoxOptions options = new FirefoxOptions();
 //        options.setCapability("platform", "WIN10");
 //        options.setCapability("browserName", "firefox");
-//        WebDriver driver = null;
+        WebDriver driver = null;
 
 
 
-        //  dzialajace http://192.168.157.43:5555/wd/hub
+        //  standalone selenium grid server .bat http://192.168.157.43:5555/wd/hub
         try {
-            driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), dc);
+            driver = new RemoteWebDriver(new URL("http://192.168.157.43:5555/wd/hub"), dc);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
 
+        driver.manage().window().maximize();
         return driver;
     }
 

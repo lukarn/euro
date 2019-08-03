@@ -32,7 +32,7 @@ public class TestSignIn
     {
         return new Object[][]{
                 {1, "https://www.euro.com.pl/", "chrome"},
-//                {1, "https://www.euro.com.pl/", "firefox"},
+                {1, "https://www.euro.com.pl/", "firefox"},
         };
     }
 
