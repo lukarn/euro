@@ -8,56 +8,15 @@
     -->
     <test verbose="3" name="test 1">
         <classes>
-            <!-- comments here
-            <class name="tests.TestTerminarz"/>
--->
 
-            <!-- comments here
-            <class name="tests.TestGrafik"/>
--->
-
-            <!-- comments here
-            <class name="tests.TestODT"/>
--->
-
-            <!-- comments here
-            <class name="tests.TestAddRemovePatients"/>
--->
-
-            <!-- comments here
-            <class name="tests.TestSzpitalPlanowanieDodaj"/>
--->
-
-            <!-- comments here
-            <class name="tests.TestSzpitalPlanowaniePrzyjmijAllOddzial"/>
--->
-
-            <!-- comments here
-            <class name="tests.TestSzpitalOddzialBlokOperacyjnyAll"/>
--->
-
-            <!-- comments here
-            <class name="tests.TestSzpitaBlokOperacyjnyOdzialAll"/>
--->
-
-            <!-- comments here
-            <class name="tests.TestSzpitalPlanowaniePotwTermin"/>
--->
-
-            <!-- comments here
-            <class name="tests.TestSzpitalOddzialEdytujDaneWypisu"/>
--->
-
-            <!-- comments here
-            <class name="tests.TestSzpitalPlanowanieEdytuj"/>
--->
-
-            <!-- comments here
-            <class name="tests.TestODTpzu"/>
--->
 
             <!-- comments here-->
+            <class name="tests.TestDesktop"/>
+
+
+            <!-- comments here
             <class name="tests.TestSignIn"/>
+            -->
 
 
         </classes>
