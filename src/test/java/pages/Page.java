@@ -42,7 +42,6 @@ public abstract class Page {
     public boolean clickAt(WebElement locator, long timeout, TimeUnit timeunit){
         try{
             await().atMost(timeout, timeunit).ignoreExceptions().until(() -> clickAt());
-            //locator.click();
             return true;
         }
         catch(Exception e){

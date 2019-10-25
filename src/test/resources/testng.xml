@@ -9,66 +9,15 @@
     <test verbose="3" name="test 1">
         <classes>
 
+            <!-- comments here
+            <class name="tests.TestDesktop"/>
+-->
 
             <!-- comments here-->
-            <class name="tests.TestDesktop"/>
-
-
-            <!-- comments here
             <class name="tests.TestSignIn"/>
-            -->
 
 
         </classes>
     </test>
-
-    <!-- comments here
-    <test verbose="3" name="test 2">
-        <classes>
-            <class name="tests.TestODTpzu"/>
-        </classes>
-    </test>
-    <test verbose="3" name="test 3">
-        <classes>
-            <class name="tests.TestODTpzu"/>
-        </classes>
-    </test>
-    <test verbose="3" name="test 4">
-        <classes>
-            <class name="tests.TestODTpzu"/>
-        </classes>
-    </test>
-    <test verbose="3" name="test 5">
-        <classes>
-            <class name="tests.TestODTpzu"/>
-        </classes>
-    </test>
-
-    <test verbose="3" name="test 6">
-        <classes>
-            <class name="tests.TestODTpzu"/>
-        </classes>
-    </test>
-    <test verbose="3" name="test 7">
-        <classes>
-            <class name="tests.TestODTpzu"/>
-        </classes>
-    </test>
-    <test verbose="3" name="test 8">
-        <classes>
-            <class name="tests.TestODTpzu"/>
-        </classes>
-    </test>
-    <test verbose="3" name="test 9">
-        <classes>
-            <class name="tests.TestODTpzu"/>
-        </classes>
-    </test>
-    <test verbose="3" name="test 10">
-        <classes>
-            <class name="tests.TestODTpzu"/>
-        </classes>
-    </test>
--->
 
 </suite>

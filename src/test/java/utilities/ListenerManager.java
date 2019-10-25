@@ -53,22 +53,25 @@ public class ListenerManager extends TestListenerAdapter {
         else
         {
             System.out.println("Test method not recognized in ListenerManager screenShot- should be : " + testClassSelect);
-            ts = (TakesScreenshot) TestSignIn.driver;   //just for wrong init - correct to your method
+            ts = null;   //just for wrong init - correct to your method
         }
 
-        File srcFile = ts.getScreenshotAs(OutputType.FILE);
+        if(ts != null) {
+            File srcFile = ts.getScreenshotAs(OutputType.FILE);
 
-        try
-        {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-            Date date = new Date();
+            try {
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+                Date date = new Date();
 
-            //ScreenShot
-            FileUtils.copyFile(srcFile, new File(System.getProperty("user.dir") + "\\screenShots\\NOK" + tr.getName() + dateFormat.format(date) + ".png"));
+                //ScreenShot
+                FileUtils.copyFile(srcFile, new File(System.getProperty("user.dir") + "\\screenShots\\NOK" + tr.getName() + dateFormat.format(date) + ".png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        catch (IOException e)
+        else
         {
-            e.printStackTrace();
+            System.out.println("No driver - no photo.");
         }
 
         System.out.println(".....");

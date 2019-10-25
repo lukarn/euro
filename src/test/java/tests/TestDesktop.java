@@ -1,5 +1,6 @@
 package tests;
 
+import org.apache.commons.collections4.MapUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -97,6 +98,15 @@ public class TestDesktop
         CalculatorSession.findElementByName("Równa się").click();
         Assert.assertEquals("3", _GetCalculatorResultText());
 
+        System.out.println("------------------------------------------------------");
+
+        //MapUtils.debugPrint(System.out, "Map as String", CalculatorSession.getStatus());
+
+        //MapUtils.debugPrint(System.out, "Map as String", CalculatorSession.getSessionDetails());
+        //System.out.println(CalculatorSession.getAllSessionDetails());
+
+
+
 
 
 
@@ -105,7 +115,7 @@ public class TestDesktop
 //        BasePage basePage = new BasePage(driver);
 //        Assert.assertTrue(basePage.isAt(timeoutIsAt, TimeUnit.SECONDS), "----------BasePage not loaded!");
 
-        Thread.sleep(5000);
+        Thread.sleep(1000);
     }
 
     protected String _GetCalculatorResultText()

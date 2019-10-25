@@ -54,7 +54,14 @@ public class TestSignIn
     @AfterMethod()
     public void AfterMethod()
     {
-        driver.quit();
+        if(driver != null)
+        {
+            driver.quit();
+        }
+        else
+        {
+            System.out.println("Something is wrong ---> driver = null in AfterMethod");
+        }
     }
 
     //copy to disable:
@@ -80,7 +87,7 @@ public class TestSignIn
 
         BasePage basePage = new BasePage(driver);
         basePage.setZalogujButton();
-        basePage.setZarejestrujButton();
+//        basePage.setZarejestrujButton();
 
 //
 //
@@ -91,7 +98,7 @@ public class TestSignIn
 //        Zaloguj zaloguj = new Zaloguj(driver);
 //        Assert.assertTrue(zaloguj.isAt(timeoutIsAt, TimeUnit.SECONDS), "----------Zaloguj page not loaded!");
 
-        //Thread.sleep(5000);
+        Thread.sleep(5000);
     }
 
 

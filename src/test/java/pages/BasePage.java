@@ -29,10 +29,12 @@ public class BasePage extends Page {
         return clickOK(this.locator);
     }
 
-    @FindAll({
-            @FindBy(xpath = "//*[contains(text(), 'zaloguj')]"),
-            @FindBy(xpath = "//*[contains(text(), 'Zaloguj')]")
-    })
+//    @FindAll({
+//            @FindBy(xpath = "//*[contains(text(), 'zaloguj')]"),
+//            @FindBy(xpath = "//*[contains(text(), 'Zaloguj się') and contains(@href, 'login')]"),
+//            @FindBy(xpath = "//*[contains(text(), 'Zaloguj')]")
+//    })
+    @FindBy(xpath = "//*[contains(text(), 'Zaloguj się') and contains(@href, 'login')]")
     WebElement zalogujButton;
 
     @FindBy(xpath = "//*[contains(text(), 'Zarejestruj')]")
