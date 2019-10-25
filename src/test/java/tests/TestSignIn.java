@@ -67,7 +67,7 @@ public class TestSignIn
     //copy to disable:
     //, enabled = false
     @Test(dataProvider="getData", enabled = false)
-    public void launch(int p1, String p2, String p3) throws InterruptedException {
+    public void launch(int p1, String p2, String p3) {
         // setup driver
         DriverManager driverManager = new DriverManager(driver);
         //usingBrowser=p3;
@@ -87,6 +87,8 @@ public class TestSignIn
 
         BasePage basePage = new BasePage(driver);
         basePage.setZalogujButton();
+        System.out.println(loginData.getLoginUsername() + loginData.getLoginPassword() + commonTestData.getImieMen() + commonTestData.getImieWomen() + commonTestData.getNoHouse() + commonTestData.getMiejscowosc() + commonTestData.getNazwisko() + commonTestData.getPeselMen() + commonTestData.getPeselWomen());
+
 //        basePage.setZarejestrujButton();
 
 //

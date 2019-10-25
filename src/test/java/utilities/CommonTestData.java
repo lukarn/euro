@@ -1,8 +1,6 @@
 package utilities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -12,27 +10,27 @@ import java.util.List;
 public class CommonTestData {
 
     @JsonProperty("peselMen")
-    List<String> peselMen;
+    private List<String> peselMen;
 
     @JsonProperty("peselWomen")
-    List<String> peselWomen;
+    private List<String> peselWomen;
 
     @JsonProperty("nazwisko")
-    List<String> nazwisko;
+    private List<String> nazwisko;
 
     @JsonProperty("miejscowosc")
-    List<String> miejscowosc;
+    private List<String> miejscowosc;
 
     @JsonProperty("imieMen")
-    String imieMen;
+    private String imieMen;
 
     @JsonProperty("imieWomen")
-    String imieWomen;
+    private String imieWomen;
 
     @JsonProperty("noHouse")
-    String noHouse;
+    private String noHouse;
 
-    public static CommonTestData get(String filename) throws JsonParseException, JsonMappingException, IOException {
+    public static CommonTestData get(String filename) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(new File(filename), CommonTestData.class);
     }
