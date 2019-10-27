@@ -6,15 +6,16 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.Account;
 import pages.BasePage;
 
+import pages.LoginPage;
 import utilities.CommonTestData;
 import utilities.DriverManager;
 import utilities.LoginData;
 
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 
 public class TestSignIn
@@ -32,7 +33,7 @@ public class TestSignIn
     {
         return new Object[][]{
                 {1, "https://www.euro.com.pl/", "chrome"},
-                {1, "https://www.euro.com.pl/", "firefox"},
+//                {1, "https://www.euro.com.pl/", "firefox"},
         };
     }
 
@@ -78,28 +79,76 @@ public class TestSignIn
         System.out.println("-------testing www no. " + p1 + " : " + p2 + " on " + p3);
 
         BasePage basePage = new BasePage(driver);
-        Assert.assertTrue(basePage.isAt(timeoutIsAt, TimeUnit.SECONDS), "----------BasePage not loaded!");
+        Assert.assertTrue(basePage.isAt(timeoutIsAt), "----------BasePage not loaded!");
     }
 
-    @Test(dataProvider="getData")
-    public void zaloguj(int p1, String p2, String p3) throws InterruptedException {
+    @Test(dataProvider="getData", priority=1)
+    public void loginIncorrect(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
         BasePage basePage = new BasePage(driver);
         basePage.setZalogujButton();
-        System.out.println(loginData.getLoginUsername() + loginData.getLoginPassword() + commonTestData.getImieMen() + commonTestData.getImieWomen() + commonTestData.getNoHouse() + commonTestData.getMiejscowosc() + commonTestData.getNazwisko() + commonTestData.getPeselMen() + commonTestData.getPeselWomen());
 
-//        basePage.setZarejestrujButton();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.setLoginInput(loginData.getLoginUsername());
+        loginPage.setPasswordInput(loginData.getLoginPassword());
+        loginPage.setZalogujButton();
 
-//
-//
-//        basePage.enterUsername(loginData.getLoginUsername());
-//        basePage.enterPassword(loginData.getLoginPassword());
-//        basePage.setLoginButton();
-//
-//        Zaloguj zaloguj = new Zaloguj(driver);
-//        Assert.assertTrue(zaloguj.isAt(timeoutIsAt, TimeUnit.SECONDS), "----------Zaloguj page not loaded!");
+        Assert.assertTrue(loginPage.loginError(), "----------Can not see login error info after incorrect login data");
+    }
 
+    @Test(dataProvider="getData", priority=2)
+    public void signUp(int p1, String p2, String p3) {
+        launch(p1, p2, p3);
+
+        BasePage basePage = new BasePage(driver);
+        basePage.setZalogujButton();
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.setEmailInput(loginData.getLoginUsername());
+        loginPage.setPasswordNewInput(loginData.getLoginPassword());
+        loginPage.setPassword2NewInput(loginData.getLoginPassword());
+        loginPage.setFirstnameInput(commonTestData.getName().get(0));
+        loginPage.setSurnameInput(commonTestData.getSurname().get(0));
+        loginPage.setAckCheckButton();
+
+        loginPage.setZarejestrujButton();
+
+        Account account = new Account(driver);
+        Assert.assertTrue(account.isAt(timeoutIsAt), "----------Sign up fail - you are not on desired page");
+    }
+
+    @Test(dataProvider="getData", priority=3)
+    public void loginCorrect(int p1, String p2, String p3) {
+        launch(p1, p2, p3);
+
+        BasePage basePage = new BasePage(driver);
+        basePage.setZalogujButton();
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.setLoginInput(loginData.getLoginUsername());
+        loginPage.setPasswordInput(loginData.getLoginPassword());
+        loginPage.setZalogujButton();
+
+        Account account = new Account(driver);
+        Assert.assertTrue(account.isAt(timeoutIsAt), "----------Log in fail - you are not on desired page");
+    }
+
+    @Test(dataProvider="getData", priority=9)
+    public void deleteAccount(int p1, String p2, String p3) throws InterruptedException {
+        loginCorrect(p1, p2, p3);
+
+        Account account = new Account(driver);
+        account.deleteAccount();
+
+        BasePage basePage = new BasePage(driver);
+        Assert.assertTrue(basePage.isAt(timeoutIsAt), "----------BasePage after delete account not loaded!");
+
+        driver.quit();
+        loginIncorrect(p1, p2, p3);
+
+
+        System.out.println(commonTestData.getCity());
         Thread.sleep(5000);
     }
 
