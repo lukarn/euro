@@ -10,6 +10,7 @@ import pages.Account;
 import pages.BasePage;
 
 import pages.LoginPage;
+import pages.Shopping;
 import utilities.CommonTestData;
 import utilities.DriverManager;
 import utilities.LoginData;
@@ -82,7 +83,7 @@ public class TestSignIn
         Assert.assertTrue(basePage.isAt(timeoutIsAt), "----------BasePage not loaded!");
     }
 
-    @Test(dataProvider="getData", priority=1)
+    @Test(dataProvider="getData", priority=1, enabled = false)
     public void loginIncorrect(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
@@ -97,7 +98,7 @@ public class TestSignIn
         Assert.assertTrue(loginPage.loginError(), "----------Can not see login error info after incorrect login data");
     }
 
-    @Test(dataProvider="getData", priority=2)
+    @Test(dataProvider="getData", priority=2, enabled = false)
     public void signUp(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
@@ -118,7 +119,7 @@ public class TestSignIn
         Assert.assertTrue(account.isAt(timeoutIsAt), "----------Sign up fail - you are not on desired page");
     }
 
-    @Test(dataProvider="getData", priority=3)
+    @Test(dataProvider="getData", priority=3, enabled = false)
     public void loginCorrect(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
@@ -134,8 +135,27 @@ public class TestSignIn
         Assert.assertTrue(account.isAt(timeoutIsAt), "----------Log in fail - you are not on desired page");
     }
 
-    @Test(dataProvider="getData", priority=9)
-    public void deleteAccount(int p1, String p2, String p3) throws InterruptedException {
+    //////////////////////////////////////////////////////////////////////////////////I am here:
+    @Test(dataProvider="getData", priority=4)
+    public void shopping(int p1, String p2, String p3) {
+        loginCorrect(p1, p2, p3);
+
+        Shopping shopping = new Shopping(driver);
+        shopping.searchProduct("telewizor led samsung");
+//        shopping.choseByPrice("2000","2001");
+        shopping.choseByPrice("2000","3500");
+
+
+        System.out.println(commonTestData.getCity());
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test(dataProvider="getData", priority=9, enabled = false)
+    public void deleteAccount(int p1, String p2, String p3) {
         loginCorrect(p1, p2, p3);
 
         Account account = new Account(driver);
@@ -146,10 +166,6 @@ public class TestSignIn
 
         driver.quit();
         loginIncorrect(p1, p2, p3);
-
-
-        System.out.println(commonTestData.getCity());
-        Thread.sleep(5000);
     }
 
 

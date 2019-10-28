@@ -50,6 +50,7 @@ public abstract class Page {
             return false;
         }
     }
+
 //    public void clickUntilElementIsPresent(WebElement clickLocator, WebElement presentLocator)
 //    {
 //        boolean isPresent=true;
