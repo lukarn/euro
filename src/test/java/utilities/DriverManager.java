@@ -14,7 +14,7 @@ public class DriverManager {
 
     private WebDriver driver;
 
-    public static long timeoutDriverManager = 10;
+    public static long timeoutDriverManager = 20;
 
     public DriverManager(WebDriver driver)
     {
