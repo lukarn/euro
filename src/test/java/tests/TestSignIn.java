@@ -143,7 +143,7 @@ public class TestSignIn
         Shopping shopping = new Shopping(driver);
         shopping.searchProduct("telewizor led samsung");
 //        shopping.choseByPrice("2000","2001");
-        shopping.choseByPrice("2000","3500");
+        shopping.choseByPrice("2000","2500");
 
 
         System.out.println(commonTestData.getCity());

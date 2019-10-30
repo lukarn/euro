@@ -77,10 +77,11 @@ public class Shopping extends Page {
         priceMaxInput.sendKeys(priceMax);
         clickElement(filterPriceButton);
 
+        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0);");
 
         try {
-//            WebDriverWait wait = new WebDriverWait(driver, 10);
-//            wait.until(ExpectedConditions.visibilityOf(itemCountText));
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.visibilityOf(itemCountText));
             if(itemCountText.getText().equalsIgnoreCase("(0)"))
             {
                 Assert.fail("---------------No item found! Check and change filters.");
@@ -89,8 +90,8 @@ public class Shopping extends Page {
         }
         catch(org.openqa.selenium.StaleElementReferenceException ex)
         {
-//            WebDriverWait wait = new WebDriverWait(driver, 10);
-//            wait.until(ExpectedConditions.visibilityOf(itemCountText));
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.visibilityOf(itemCountText));
             if(itemCountText.getText().equalsIgnoreCase("(0)"))
             {
                 Assert.fail("---------------No item found! Check and change filters.");
