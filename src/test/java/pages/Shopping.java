@@ -1,12 +1,9 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utilities.DriverManager;
 
@@ -49,9 +46,14 @@ public class Shopping extends Page {
     @FindBy(xpath = "//*[@id='products-header']//*[contains(@class, 'count')]")
     private WebElement itemCountText;
 
-    //*[@id="products-header"]/div[2]
+    @FindBy(xpath = "//*[@id='label-filter-availability-0']")
+    private WebElement itemAvailabilityCheck;
 
+    @FindBy(xpath = "//*[@id='product-top']//*[@class='product-button']//*[contains(@title, 'koszyk') and contains(text(), 'koszyk')]")
+    private WebElement addToCartButton;
 
+    @FindBy(xpath = "//*[@id='product-top']//*[@class='price-normal selenium-price-normal']")
+    private WebElement priceNormalText;
 
     public Shopping(WebDriver driver)
     {
@@ -77,39 +79,42 @@ public class Shopping extends Page {
         priceMaxInput.sendKeys(priceMax);
         clickElement(filterPriceButton);
 
-        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0);");
-
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, 10);
-            wait.until(ExpectedConditions.visibilityOf(itemCountText));
-            if(itemCountText.getText().equalsIgnoreCase("(0)"))
-            {
-                Assert.fail("---------------No item found! Check and change filters.");
-                return;
-            }
-        }
-        catch(org.openqa.selenium.StaleElementReferenceException ex)
+        waitForVisible(itemCountText);
+        System.out.println("Item count: " + itemCountText.getText());
+        if(itemCountText.getText().equalsIgnoreCase("(0)"))
         {
-            WebDriverWait wait = new WebDriverWait(driver, 10);
-            wait.until(ExpectedConditions.visibilityOf(itemCountText));
-            if(itemCountText.getText().equalsIgnoreCase("(0)"))
-            {
-                Assert.fail("---------------No item found! Check and change filters.");
-                return;
-            }
+            Assert.fail("---------------No item found! Check and change filters.");
+            return;
         }
-
-
-
         clickElement(priceMinInput);
 
+        clickElement(itemAvailabilityCheck);
         clickElement(filterSortSelect);
         clickElement(sortFromMinSelect);
+        clickElement(filterSortSelect);
 
-        ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0);");
-
-//        clickUntilElementIsPresent(firstOnListButton, firstOnListButton);
         clickElement(firstOnListButton);
+    }
+
+    public boolean checkProduct(double min, double max)
+    {
+        waitForVisible(addToCartButton);
+        try {
+            if(addToCartButton.isDisplayed())
+            {
+                String str = priceNormalText.getText();
+                str = str.replaceAll("\\D+","");
+                Double d = Double.valueOf(str);
+                return (d > min) && (d < max);
+            }
+            else {
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
 
     }
 

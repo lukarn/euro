@@ -143,7 +143,9 @@ public class TestSignIn
         Shopping shopping = new Shopping(driver);
         shopping.searchProduct("telewizor led samsung");
 //        shopping.choseByPrice("2000","2001");
-        shopping.choseByPrice("2000","2500");
+        shopping.choseByPrice("2000","4000");
+
+        Assert.assertTrue(shopping.checkProduct(2000.0, 2500.0), "-----------Price not in expected range.");
 
 
         System.out.println(commonTestData.getCity());
