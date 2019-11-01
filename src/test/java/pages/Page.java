@@ -60,6 +60,7 @@ public abstract class Page {
 
     void clickElement(WebElement clickLocator)
     {
+        System.out.println("Clicking locator: " + clickLocator + " on page with title: " + driver.getTitle());
         ((JavascriptExecutor)driver).executeScript("window.scrollTo(0,0);");
         locator = clickLocator;
         Assert.assertTrue(clickAt((DriverManager.timeoutDriverManager - 1)), "----------can not click this element (not found or not clickable)");

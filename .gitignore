@@ -42,3 +42,5 @@ hs_err_pid*
 *.iml
 *.txt
 src/main
+src/test/java/pages/temp.java
+src/test/java/tests/TestDesktop.java

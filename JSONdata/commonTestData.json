@@ -1,21 +1,17 @@
 {
    "surname":
    ["Testowicz",
-      "Sherrocks",
-      "Testotynopoli"
+      "Testbond",
+      "Testjames"
    ],
 
    "name":
-   ["Testowicz",
-      "Sherrocks",
-      "Testotynopoli"
+   ["Tomek",
+      "Bond",
+      "James"
    ],
 
-   "city":
-   ["Bytom",
-      "Piekary Śląskie",
-      "Katowice",
-      "Tarnowskie Góry",
-      "Radzionków",
-      "Gliwice"]
+   "searchItem":
+   ["telewizor led samsung",
+      "żelazko tefal"]
 }

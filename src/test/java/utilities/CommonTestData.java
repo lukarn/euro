@@ -15,8 +15,8 @@ public class CommonTestData {
     @JsonProperty("name")
     private List<String> name;
 
-    @JsonProperty("city")
-    private List<String> city;
+    @JsonProperty("searchItem")
+    private List<String> searchItem;
 
     public static CommonTestData get(String filename) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
@@ -31,8 +31,8 @@ public class CommonTestData {
         return name;
     }
 
-    public List<String> getCity() {
-        return city;
+    public List<String> getSearchItem() {
+        return searchItem;
     }
 
 }

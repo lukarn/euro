@@ -83,7 +83,7 @@ public class TestSignIn
         Assert.assertTrue(basePage.isAt(timeoutIsAt), "----------BasePage not loaded!");
     }
 
-    @Test(dataProvider="getData", priority=1, enabled = false)
+    @Test(dataProvider="getData", priority=1)
     public void loginIncorrect(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
@@ -98,7 +98,7 @@ public class TestSignIn
         Assert.assertTrue(loginPage.loginError(), "----------Can not see login error info after incorrect login data");
     }
 
-    @Test(dataProvider="getData", priority=2, enabled = false)
+    @Test(dataProvider="getData", priority=2)
     public void signUp(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
@@ -119,7 +119,7 @@ public class TestSignIn
         Assert.assertTrue(account.isAt(timeoutIsAt), "----------Sign up fail - you are not on desired page");
     }
 
-    @Test(dataProvider="getData", priority=3, enabled = false)
+    @Test(dataProvider="getData", priority=3)
     public void loginCorrect(int p1, String p2, String p3) {
         launch(p1, p2, p3);
 
@@ -135,28 +135,21 @@ public class TestSignIn
         Assert.assertTrue(account.isAt(timeoutIsAt), "----------Log in fail - you are not on desired page");
     }
 
-    //////////////////////////////////////////////////////////////////////////////////I am here:
     @Test(dataProvider="getData", priority=4)
     public void shopping(int p1, String p2, String p3) {
         loginCorrect(p1, p2, p3);
 
         Shopping shopping = new Shopping(driver);
-        shopping.searchProduct("telewizor led samsung");
+//        shopping.searchProduct("telewizor led samsung");
+        shopping.searchProduct(commonTestData.getSearchItem().get(0));
 //        shopping.choseByPrice("2000","2001");
         shopping.choseByPrice("2000","4000");
 
         Assert.assertTrue(shopping.checkProduct(2000.0, 2500.0), "-----------Price not in expected range.");
 
-
-        System.out.println(commonTestData.getCity());
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
-    @Test(dataProvider="getData", priority=9, enabled = false)
+    @Test(dataProvider="getData", priority=9)
     public void deleteAccount(int p1, String p2, String p3) {
         loginCorrect(p1, p2, p3);
 
@@ -169,10 +162,5 @@ public class TestSignIn
         driver.quit();
         loginIncorrect(p1, p2, p3);
     }
-
-
-
-
-
 
 }
