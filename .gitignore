@@ -44,3 +44,4 @@ hs_err_pid*
 src/main
 src/test/java/pages/temp.java
 src/test/java/tests/TestDesktop.java
+!/readme.txt
